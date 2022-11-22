@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Car : MonoBehaviour
 {
@@ -22,6 +23,16 @@ public class Car : MonoBehaviour
         transform.Translate(Vector3.forward * carSpeed * Time.deltaTime);
         
     }
+
+    void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Obstacles"))
+        {
+            SceneManager.LoadScene(0);
+        }
+
+    }
+
     public void Steer (int value)
     {
         steerValue = value;
