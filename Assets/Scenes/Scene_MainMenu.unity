@@ -449,6 +449,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 1555605581}
+  maxEnergy: 3
+  energyRechargeDuration: 1
+  energyText: {fileID: 1056417401}
 --- !u!1 &1056417399
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +464,7 @@ GameObject:
   - component: {fileID: 1056417402}
   - component: {fileID: 1056417401}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: EnergyPlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
