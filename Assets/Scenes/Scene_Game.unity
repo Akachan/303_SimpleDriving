@@ -7560,7 +7560,7 @@ GameObject:
   - component: {fileID: 804720044}
   - component: {fileID: 804720043}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasTouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11034,7 +11034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1916225297}
-  scoreRatio: 0.5
+  scoreRatio: 2
 --- !u!4 &1116468178
 Transform:
   m_ObjectHideFlags: 0
@@ -18406,7 +18406,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 195.8
+  m_fontSize: 195.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
