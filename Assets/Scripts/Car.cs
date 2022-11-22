@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    [SerializeField] float carSpeed= 1f;
+    [SerializeField] float carAceleration = 2f;
+    [SerializeField] float rotationSpeed = 20f;
 
-    [SerializeField] float CarAceleration = 1f;
+    int steerValue;  //para validar si debe ser + o -
 
-    float carSpeed = 0f;
 
-    // Update is called once per frame
+
+   
     void Update()
     {
-        carSpeed += CarAceleration * Time.deltaTime; 
+        carSpeed += carAceleration * Time.deltaTime; 
+
+        transform.Rotate(0f, steerValue * rotationSpeed * Time.deltaTime, 0f);
+
         transform.Translate(Vector3.forward * carSpeed * Time.deltaTime);
         
     }
-}
+    public void Steer (int value)
+    {
+        steerValue = value;
+    }
+    }
