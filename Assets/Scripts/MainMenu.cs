@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header ("Notifications")]
+    [SerializeField] AndroidNotificationHandler androidNotificationHandler;
+
     [Header("Score")]
     [SerializeField] TMP_Text highScoreText;
     
@@ -21,17 +24,26 @@ public class MainMenu : MonoBehaviour
     const string EnergyReadyKey = "EnergyReady";
 
 
+
+
+
     private void Start()
     {
         HighScore();
+        SetEnergy();
+
+    }
+
+    private void SetEnergy()
+    {
         energy = PlayerPrefs.GetInt(EnergyKey, maxEnergy);
         if (energy == 0)
         {
             string energyReadyString = PlayerPrefs.GetString(EnergyReadyKey, string.Empty);
-            if(energyReadyString == string.Empty) {return;}
+            if (energyReadyString == string.Empty) { return; }
 
             DateTime energyReadyTime = DateTime.Parse(energyReadyString);
-            if(DateTime.Now > energyReadyTime)
+            if (DateTime.Now > energyReadyTime)
             {
                 energy = maxEnergy;
                 PlayerPrefs.SetInt(EnergyKey, energy);
@@ -39,8 +51,6 @@ public class MainMenu : MonoBehaviour
 
         }
         energyText.text = $"Play ({energy})";
-
-        
     }
 
     private void HighScore()
@@ -59,8 +69,11 @@ public class MainMenu : MonoBehaviour
         if(energy <= 0)
         {
             DateTime energyReady = DateTime.Now.AddMinutes(energyRechargeDuration);
-            
             PlayerPrefs.SetString(EnergyReadyKey, energyReady.ToString());
+#if UNITY_ANDROID
+            androidNotificationHandler.ScheduleNotification(energyReady);
+#endif
+
         }
 
       
